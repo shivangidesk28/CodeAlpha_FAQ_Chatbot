@@ -1,0 +1,350 @@
+[
+  {
+    "question": "What is your return policy?",
+    "keywords": [
+      "return",
+      "send back",
+      "money back",
+      "return window",
+      "return product",
+      "return item",
+      "return policy"
+    ],
+    "answer": "You can return most items within 30 days of delivery for a full refund. Items must be unused and in their original packaging."
+  },
+  {
+    "question": "How long do refunds take?",
+    "keywords": [
+      "refund status",
+      "money back time",
+      "when will I get my money",
+      "refund timeline",
+      "refund",
+      "refund time",
+      "refund policy",
+      "when refund"
+    ],
+    "answer": "Refunds are processed within 5-7 business days after we receive your returned item. The money goes back to your original payment method."
+  },
+  {
+    "question": "How do I track my order?",
+    "keywords": [
+      "track package",
+      "where is my order",
+      "order status",
+      "shipment status",
+      "tracking link",
+      "track",
+      "tracking",
+      "track order"
+    ],
+    "answer": "Open the 'My Orders' page and click 'Track' next to your order. You will also get a tracking link by email and SMS once your order ships."
+  },
+  {
+    "question": "How long does delivery take?",
+    "keywords": [
+      "delivery time",
+      "when will it arrive",
+      "how many days",
+      "express delivery",
+      "arrive",
+      "how many days for delivery",
+      "delivery days",
+      "delivery"
+    ],
+    "answer": "Standard delivery takes 3-5 business days. Express delivery takes 1-2 business days and is available in most major cities."
+  },
+  {
+    "question": "How much does shipping cost?",
+    "keywords": [
+      "shipping charges",
+      "delivery charges",
+      "free shipping",
+      "delivery fee",
+      "shipping fee",
+      "shipping",
+      "shipping cost"
+    ],
+    "answer": "Shipping is free on orders above Rs. 499. For smaller orders, standard shipping costs Rs. 49."
+  },
+  {
+    "question": "Do you offer cash on delivery?",
+    "keywords": [
+      "COD",
+      "cash on delivery available",
+      "pay on delivery",
+      "pay when delivered",
+      "pay cash",
+      "cash on delivery",
+      "cod available"
+    ],
+    "answer": "Yes, cash on delivery is available for orders up to Rs. 5,000 in most pin codes. A small handling fee of Rs. 25 applies."
+  },
+  {
+    "question": "What payment methods do you accept?",
+    "keywords": [
+      "UPI",
+      "credit card",
+      "debit card",
+      "net banking",
+      "wallet",
+      "how can I pay",
+      "ways to pay",
+      "payment",
+      "payment options",
+      "pay online",
+      "google pay",
+      "paytm",
+      "phonepe",
+      "upi payment",
+      "card payment",
+      "credit card payment",
+      "net banking payment"
+    ],
+    "answer": "We accept UPI, credit and debit cards, net banking, popular wallets, and cash on delivery."
+  },
+  {
+    "question": "How can I cancel my order?",
+    "keywords": [
+      "cancel",
+      "cancellation",
+      "stop my order",
+      "do not want order",
+      "cancel order"
+    ],
+    "answer": "Go to 'My Orders', select the order, and click 'Cancel'. Orders can be cancelled before they are shipped. After shipping, you can return the item instead."
+  },
+  {
+    "question": "Can I change my delivery address after placing an order?",
+    "keywords": [
+      "edit address",
+      "wrong address",
+      "update address",
+      "change shipping address"
+    ],
+    "answer": "You can change the address before the order is shipped. Go to 'My Orders', pick the order and click 'Edit Address'. After shipping, the address cannot be changed."
+  },
+  {
+    "question": "How do I create an account?",
+    "keywords": [
+      "sign up",
+      "register",
+      "new account",
+      "registration",
+      "account",
+      "create account"
+    ],
+    "answer": "Click 'Sign Up' at the top right, enter your name, email and phone number, then verify the OTP we send you. It takes less than a minute."
+  },
+  {
+    "question": "I forgot my password. How do I reset it?",
+    "keywords": [
+      "reset password",
+      "change password",
+      "cannot login",
+      "login problem",
+      "password recovery",
+      "password",
+      "forgot password"
+    ],
+    "answer": "Click 'Forgot Password' on the login page, enter your registered email, and we will send you a link to set a new password."
+  },
+  {
+    "question": "How do I apply a discount coupon?",
+    "keywords": [
+      "promo code",
+      "coupon code",
+      "voucher",
+      "offer code",
+      "coupon",
+      "apply coupon",
+      "promo",
+      "get coupon",
+      "use coupon",
+      "discount code",
+      "apply discount"
+    ],
+    "answer": "On the checkout page, type your coupon code in the 'Apply Coupon' box and click 'Apply'. The discount will show in your order summary."
+  },
+  {
+    "question": "Why was my payment declined?",
+    "keywords": [
+      "payment failed",
+      "transaction failed",
+      "money deducted",
+      "payment error",
+      "payment not going through",
+      "payment declined",
+      "declined",
+      "payment failed money deducted",
+      "amount deducted",
+      "money debited",
+      "payment not successful"
+    ],
+    "answer": "Payments can fail due to insufficient balance, a wrong OTP, or a bank-side limit. Please try again or use a different payment method. If money was deducted, it is refunded automatically within 3-5 business days."
+  },
+  {
+    "question": "What if I receive a damaged or wrong product?",
+    "keywords": [
+      "broken item",
+      "defective",
+      "wrong item",
+      "faulty",
+      "item damaged",
+      "report an issue",
+      "damaged",
+      "wrong product",
+      "received wrong item",
+      "broken product",
+      "order damaged",
+      "damaged order",
+      "damaged item",
+      "wrong order",
+      "wrong item received"
+    ],
+    "answer": "We are sorry about that! Go to 'My Orders', select the order and click 'Report an Issue' with a photo within 48 hours. We will send a replacement or refund."
+  },
+  {
+    "question": "Do products come with a warranty?",
+    "keywords": [
+      "guarantee",
+      "warranty period",
+      "electronics warranty",
+      "repair",
+      "warranty",
+      "warranty product",
+      "phone warranty",
+      "laptop warranty",
+      "mobile warranty",
+      "warranty on electronics"
+    ],
+    "answer": "Electronics come with a 1-year manufacturer warranty. The warranty details are listed on each product page and in your invoice."
+  },
+  {
+    "question": "Can I exchange a product for a different size or color?",
+    "keywords": [
+      "exchange",
+      "swap",
+      "replace size",
+      "different colour",
+      "wrong size",
+      "exchange product",
+      "size",
+      "colour"
+    ],
+    "answer": "Yes, exchanges are available within 15 days of delivery, subject to stock availability. Choose 'Exchange' instead of 'Return' in 'My Orders'."
+  },
+  {
+    "question": "Do you deliver internationally?",
+    "keywords": [
+      "ship abroad",
+      "overseas",
+      "outside India",
+      "other countries",
+      "foreign",
+      "worldwide",
+      "international shipping",
+      "international",
+      "deliver abroad"
+    ],
+    "answer": "Not yet. Right now we deliver only within India, but international shipping is planned for the future."
+  },
+  {
+    "question": "How can I contact customer support?",
+    "keywords": [
+      "customer care",
+      "helpline",
+      "phone number",
+      "email address",
+      "talk to someone",
+      "support number",
+      "contact us",
+      "support",
+      "contact",
+      "help",
+      "human agent",
+      "customer service",
+      "talk to human",
+      "talk to agent",
+      "speak to human",
+      "speak to someone"
+    ],
+    "answer": "You can email support@shopease.example or call 1800-000-0000 between 9 AM and 9 PM, Monday to Saturday. Live chat is available right here too."
+  },
+  {
+    "question": "What are your customer support working hours?",
+    "keywords": [
+      "support timing",
+      "when are you open",
+      "open on sunday",
+      "weekend",
+      "holiday",
+      "office hours",
+      "available time",
+      "business hours"
+    ],
+    "answer": "Our support team is available from 9 AM to 9 PM, Monday to Saturday. This chatbot is available 24/7."
+  },
+  {
+    "question": "Is my personal and payment information safe?",
+    "keywords": [
+      "privacy",
+      "security",
+      "secure",
+      "data protection",
+      "is it safe",
+      "card details safe",
+      "safe",
+      "safety",
+      "is my data safe",
+      "data secure",
+      "data security",
+      "my data safe",
+      "information safe",
+      "personal data"
+    ],
+    "answer": "Yes. All payments are encrypted and processed through secure payment gateways. We never store your full card details and never share your data with third parties."
+  },
+  {
+    "question": "Do you have a mobile app?",
+    "keywords": [
+      "android app",
+      "iOS app",
+      "download app",
+      "mobile application",
+      "app available",
+      "mobile app",
+      "app",
+      "ios app",
+      "app available"
+    ],
+    "answer": "Yes, the ShopEase app is available for Android and iOS. Download it from the Play Store or App Store for exclusive app-only deals."
+  },
+  {
+    "question": "How do I subscribe to the newsletter for offers?",
+    "keywords": [
+      "newsletter",
+      "subscribe",
+      "email updates",
+      "unsubscribe",
+      "offers newsletter",
+      "subscribe offers"
+    ],
+    "answer": "Enter your email in the 'Subscribe' box at the bottom of the home page. You can unsubscribe at any time from any email we send."
+  },
+  {
+    "question": "Where can I find my invoice?",
+    "keywords": [
+      "bill",
+      "receipt",
+      "download invoice",
+      "GST invoice",
+      "tax invoice",
+      "invoice",
+      "my invoice",
+      "invoice download",
+      "get invoice"
+    ],
+    "answer": "Open 'My Orders', select the order and click 'Download Invoice'. A copy is also sent to your registered email after delivery."
+  }
+]

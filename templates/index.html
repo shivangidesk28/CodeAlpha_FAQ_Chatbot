@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopBot - FAQ Assistant</title>
+  <style>
+    :root {
+      --bg1: #eef2ff;
+      --bg2: #fdf2f8;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --accent: #6366f1;
+      --accent2: #8b5cf6;
+      --bot-bubble: #f3f4f6;
+      --user-text: #ffffff;
+      --chip-bg: #eef2ff;
+      --chip-text: #4338ca;
+      --shadow: 0 20px 50px rgba(79, 70, 229, 0.18);
+    }
+    body.dark {
+      --bg1: #0f172a;
+      --bg2: #1e1b4b;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --bot-bubble: #1f2937;
+      --chip-bg: #1e1b4b;
+      --chip-text: #c7d2fe;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      color: var(--text);
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      transition: background 0.3s;
+    }
+
+    .chat-card {
+      width: 100%;
+      max-width: 460px;
+      height: min(720px, 94vh);
+      background: var(--card);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    /* ---------- Header ---------- */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 18px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+    }
+    .avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      display: grid; place-items: center;
+      font-size: 22px;
+    }
+    .title { flex: 1; }
+    .title h1 { font-size: 17px; font-weight: 700; }
+    .title p { font-size: 12px; opacity: 0.9; display: flex; align-items: center; gap: 6px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; display: inline-block; }
+    .icon-btn {
+      border: none; cursor: pointer; color: #fff;
+      background: rgba(255, 255, 255, 0.18);
+      width: 36px; height: 36px; border-radius: 10px; font-size: 16px;
+      transition: background 0.2s;
+    }
+    .icon-btn:hover { background: rgba(255, 255, 255, 0.32); }
+
+    /* ---------- Messages ---------- */
+    .messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      scroll-behavior: smooth;
+    }
+    .messages::-webkit-scrollbar { width: 6px; }
+    .messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 6px; }
+
+    .row { display: flex; gap: 8px; max-width: 88%; animation: pop 0.25s ease; }
+    .row.bot { align-self: flex-start; }
+    .row.user { align-self: flex-end; flex-direction: row-reverse; }
+    @keyframes pop { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+    .mini-avatar {
+      width: 30px; height: 30px; flex-shrink: 0;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: grid; place-items: center; font-size: 15px;
+    }
+    .bubble {
+      padding: 10px 14px;
+      border-radius: 18px;
+      font-size: 14.5px;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    .row.bot .bubble { background: var(--bot-bubble); border-bottom-left-radius: 4px; }
+    .row.user .bubble {
+      color: var(--user-text);
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-bottom-right-radius: 4px;
+    }
+    .time { display: block; font-size: 10.5px; margin-top: 4px; opacity: 0.6; }
+
+    /* ---------- Quick reply chips ---------- */
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-left: 38px; animation: pop 0.25s ease; }
+    .chip {
+      border: 1px solid var(--accent);
+      background: var(--chip-bg);
+      color: var(--chip-text);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .chip:hover { background: var(--accent); color: #fff; transform: translateY(-1px); }
+
+    /* ---------- Typing indicator ---------- */
+    .typing { display: flex; gap: 4px; padding: 14px 16px; }
+    .typing span {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--muted);
+      animation: bounce 1.2s infinite;
+    }
+    .typing span:nth-child(2) { animation-delay: 0.15s; }
+    .typing span:nth-child(3) { animation-delay: 0.3s; }
+    @keyframes bounce { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-6px); opacity: 1; } }
+
+    /* ---------- Input ---------- */
+    .input-bar {
+      display: flex; gap: 10px;
+      padding: 14px;
+      border-top: 1px solid var(--border);
+      background: var(--card);
+    }
+    .input-bar input {
+      flex: 1;
+      border: 1px solid var(--border);
+      background: var(--bot-bubble);
+      color: var(--text);
+      padding: 12px 16px;
+      border-radius: 999px;
+      font-size: 14.5px;
+      outline: none;
+      font-family: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .input-bar input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2); }
+    .send {
+      width: 46px; height: 46px; border: none; border-radius: 50%;
+      cursor: pointer; color: #fff; font-size: 18px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      transition: transform 0.15s, opacity 0.2s;
+    }
+    .send:hover { transform: scale(1.06); }
+    .send:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    @media (max-width: 480px) {
+      body { padding: 0; }
+      .chat-card { height: 100vh; max-width: 100%; border-radius: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-card">
+    <div class="header">
+      <div class="avatar">🤖</div>
+      <div class="title">
+        <h1>ShopBot</h1>
+        <p><span class="dot"></span> Online - ShopEase FAQ Assistant</p>
+      </div>
+      <button class="icon-btn" id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
+      <button class="icon-btn" id="clearBtn" title="Clear chat" aria-label="Clear chat">🗑️</button>
+    </div>
+
+    <div class="messages" id="messages"></div>
+
+    <form class="input-bar" id="form" autocomplete="off">
+      <input type="text" id="input" placeholder="Type your question..." maxlength="500" aria-label="Your message">
+      <button class="send" id="sendBtn" type="submit" aria-label="Send">➤</button>
+    </form>
+  </div>
+
+  <script>
+    const SUGGESTIONS = {{ suggestions|tojson }};
+
+    const messagesEl = document.getElementById("messages");
+    const form = document.getElementById("form");
+    const input = document.getElementById("input");
+    const sendBtn = document.getElementById("sendBtn");
+    const themeBtn = document.getElementById("themeBtn");
+    const clearBtn = document.getElementById("clearBtn");
+
+    function now() {
+      return new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    }
+    function scrollToBottom() {
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+    function sleep(ms) {
+      return new Promise(function (resolve) { setTimeout(resolve, ms); });
+    }
+
+    function addMessage(text, who, tag) {
+      const row = document.createElement("div");
+      row.className = "row " + who;
+
+      if (who === "bot") {
+        const av = document.createElement("div");
+        av.className = "mini-avatar";
+        av.textContent = "🤖";
+        row.appendChild(av);
+      }
+
+      const bubble = document.createElement("div");
+      bubble.className = "bubble";
+      bubble.textContent = text;           // textContent keeps user text safe
+
+      const time = document.createElement("span");
+      time.className = "time";
+      time.textContent = (tag ? tag + " \u00b7 " : "") + now();
+      bubble.appendChild(time);
+
+      row.appendChild(bubble);
+      messagesEl.appendChild(row);
+      scrollToBottom();
+    }
+
+    function addChips(questions) {
+      removeChips();
+      const wrap = document.createElement("div");
+      wrap.className = "chips";
+      questions.forEach(function (q) {
+        const chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = "chip";
+        chip.textContent = q;
+        chip.addEventListener("click", function () { sendMessage(q); });
+        wrap.appendChild(chip);
+      });
+      messagesEl.appendChild(wrap);
+      scrollToBottom();
+    }
+
+    function removeChips() {
+      document.querySelectorAll(".chips").forEach(function (c) { c.remove(); });
+    }
+
+    function showTyping() {
+      const row = document.createElement("div");
+      row.className = "row bot";
+      row.innerHTML = '<div class="mini-avatar">🤖</div>' +
+                      '<div class="bubble typing"><span></span><span></span><span></span></div>';
+      messagesEl.appendChild(row);
+      scrollToBottom();
+      return row;
+    }
+
+    function setBusy(busy) {
+      sendBtn.disabled = busy;
+      input.disabled = busy;
+    }
+
+    async function sendMessage(text) {
+      text = text.trim();
+      if (!text) return;
+
+      removeChips();
+      addMessage(text, "user");
+      input.value = "";
+      setBusy(true);
+      const typing = showTyping();
+
+      try {
+        const res = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: text })
+        });
+        const data = await res.json();
+        await sleep(500);                  // tiny pause so the typing dots are visible
+        typing.remove();
+
+        if (!res.ok) {
+          addMessage(data.error || "Something went wrong. Please try again.", "bot");
+        } else {
+          addMessage(data.answer, "bot", data.source === "ai" ? "\u2728 AI-generated" : "");
+          if (data.suggestions && data.suggestions.length) addChips(data.suggestions);
+        }
+      } catch (err) {
+        typing.remove();
+        addMessage("I can't reach the server right now. Please check that it is running.", "bot");
+      } finally {
+        setBusy(false);
+        input.focus();
+      }
+    }
+
+    function showWelcome() {
+      messagesEl.innerHTML = "";
+      addMessage("Hi there! 👋 I'm ShopBot. Ask me about orders, delivery, returns, payments and more. " +
+                 "You can also tap a question below.", "bot");
+      addChips(SUGGESTIONS);
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      sendMessage(input.value);
+    });
+    clearBtn.addEventListener("click", showWelcome);
+
+    themeBtn.addEventListener("click", function () {
+      const dark = document.body.classList.toggle("dark");
+      themeBtn.textContent = dark ? "☀️" : "🌙";
+      try { localStorage.setItem("shopbot-theme", dark ? "dark" : "light"); } catch (e) {}
+    });
+
+    try {
+      if (localStorage.getItem("shopbot-theme") === "dark") {
+        document.body.classList.add("dark");
+        themeBtn.textContent = "☀️";
+      }
+    } catch (e) {}
+
+    showWelcome();
+    input.focus();
+  </script>
+</body>
+</html>
